@@ -53,7 +53,7 @@ export default function EVChargingStation() {
       </header>
 
       <main className="flex flex-col gap-8 items-center">
-        <div className="grid grid-cols-4 gap-4">
+        <div className="flex flex-wrap gap-4 justify-center">
           {parkingData.parkingTimes.map((time, index) => (
             <div
               key={index}
