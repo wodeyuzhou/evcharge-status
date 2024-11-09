@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function EVChargingStation() {
-  const [parkingSpots, setParkingSpots] = useState([
+  const [parkingSpots] = useState([
     { id: 1, occupied: true, time: "00:30 경과" },
     { id: 2, occupied: true, time: "01:08 경과" },
     { id: 3, occupied: false, time: "" },
     { id: 4, occupied: true, time: "00:08 경과" },
   ]);
-  const [availableCount, setAvailableCount] = useState(2);
+  const availableCount = parkingSpots.filter((spot) => !spot.occupied).length;
   const [currentTime, setCurrentTime] = useState("");
 
   // 실시간 시간 업데이트
