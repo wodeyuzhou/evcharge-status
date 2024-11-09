@@ -11,9 +11,11 @@ type ParkingData = {
 export default function EVChargingStation() {
   const [parkingData, setParkingData] = useState<ParkingData>({
     availableSpots: 0,
-    parkingTimes: ["", "", "", ""],
+    parkingTimes: Array(7).fill(""), // 주차 가능 자리 7개
   });
+  const [currentTime, setCurrentTime] = useState("");
 
+  // 주차 데이터 업데이트
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,10 +35,20 @@ export default function EVChargingStation() {
     return () => clearInterval(interval); // 컴포넌트가 언마운트될 때 interval 정리
   }, []);
 
+  // 실시간 시간 업데이트
+  useEffect(() => {
+    const timeInterval = setInterval(() => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(timeInterval);
+  }, []);
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[var(--font-geist-sans)]">
       <header className="text-center">
         <h1 className="text-2xl font-bold">국립한밭대 전기차 충전소 알림 시스템</h1>
+        <p className="text-lg mt-2">현재 시간: {currentTime}</p>
         <p className="text-lg mt-2">실시간 주차 가능 대수: {parkingData.availableSpots} 대</p>
       </header>
 
