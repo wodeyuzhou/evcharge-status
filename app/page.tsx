@@ -70,8 +70,8 @@ export default function EVChargingStation() {
         />
       </div>
 
-      {/* 상단 헤더 - 전체 폭 차지 */}
-      <header className="bg-white bg-opacity-25 py-8 sm:py-16 px-4 sm:px-12 shadow-lg flex flex-col sm:flex-row justify-between items-center w-full fixed top-0 left-0 right-0 z-20">
+      {/* 상단 헤더 - 페이지 스크롤에 따라 움직임 */}
+      <header className="bg-white bg-opacity-25 py-8 sm:py-16 px-4 sm:px-12 shadow-lg flex flex-col sm:flex-row justify-between items-center w-full relative z-20">
         {/* 왼쪽 로고 */}
         <div className="flex items-center mb-4 sm:mb-0 pl-4 sm:pl-8">
           <Image src="/logo.jpg" alt="Logo" width={200} height={40} className="mr-4 sm:mr-8" /> {/* 로고 크기 증가 */}
@@ -79,7 +79,7 @@ export default function EVChargingStation() {
         
         {/* 가운데 텍스트 */}
         <div className="text-center flex-1">
-          <h1 className="text-xl sm:text-3xl font-bold text-black">국립한밭대 전기차 충전소</h1>
+          <h1 className="text-xl sm:text-3xl font-bold text-black">국립한밭대 실시간 전기차 충전소</h1>
           <h2 className="text-md sm:text-xl font-semibold text-black mt-2">Hanbat National University EV Charging Station Notification System</h2>
           <p className="text-lg sm:text-xl mt-6 font-semibold text-black">현재 시간: {currentTime}</p> {/* 현재 시간 표시 */}
         </div>
@@ -98,7 +98,7 @@ export default function EVChargingStation() {
       </header>
 
       {/* 주차 관련 콘텐츠 - 헤더 아래 배치 */}
-      <div className="flex flex-wrap justify-center gap-4 mt-60 pt-20">
+      <div className="flex flex-wrap justify-center gap-4 mt-12 sm:mt-20 pt-10 sm:pt-16">
         {parkingData.parkingTimes.map((time, index) => (
           <div
             key={index}
@@ -131,9 +131,10 @@ export default function EVChargingStation() {
       </div>
 
       {/* 하단 푸터 - 현재 시간과 주차 가능 대수 */}
-      <footer className="bg-white bg-opacity-50 p-4 sm:p-12 shadow-lg rounded-t-lg flex justify-center items-center w-full fixed bottom-0 left-0 right-0 z-20">
+      <footer className="bg-white bg-opacity-50 p-4 sm:p-14 shadow-lg rounded-t-lg flex justify-center items-center w-full relative mt-16">
         <div className="text-center">
           <p className="text-lg sm:text-2xl font-semibold text-gray-700 mt-2">실시간 주차 가능 대수: {parkingData.availableSpots} 대</p>
+          <p className="text-lg sm:text-2xl font-semibold text-gray-700 mt-6">소중한 오픈소스 활용 SW경진대회</p>
         </div>
       </footer>
 
