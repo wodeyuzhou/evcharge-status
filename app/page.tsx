@@ -1,21 +1,25 @@
 "use client";
-
+ 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-
+ 
 type ParkingData = {
   availableSpots: number;
   parkingTimes: string[];
 };
-
+ 
+// 여러 주차 이미지 경로를 배열로 정의
+const parkedImages = [
+  "/green.png"
+];
+ 
 export default function EVChargingStation() {
   const [parkingData, setParkingData] = useState<ParkingData>({
     availableSpots: 7,
     parkingTimes: Array(7).fill(""), // 주차 가능 자리 7개
   });
   const [currentTime, setCurrentTime] = useState("");
-
-  // 주차 데이터 업데이트
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,8 +27,7 @@ export default function EVChargingStation() {
         if (response.ok) {
           const data = await response.json();
           setParkingData(data);
-
-          // 빈 자리 개수를 계산하여 availableSpots 업데이트
+ 
           const emptySpots = data.parkingTimes.filter((time: string) => time === "").length;
           setParkingData((prevData) => ({ ...prevData, availableSpots: emptySpots }));
         }
@@ -32,14 +35,13 @@ export default function EVChargingStation() {
         console.error("Failed to fetch parking data:", error);
       }
     };
-
-    fetchData(); // 초기 데이터를 가져옴
-    const interval = setInterval(fetchData, 5000); // 5초마다 데이터 갱신
-
-    return () => clearInterval(interval); // 컴포넌트가 언마운트될 때 interval 정리
+ 
+    fetchData();
+    const interval = setInterval(fetchData, 5000);
+ 
+    return () => clearInterval(interval);
   }, []);
-
-  // 실시간 시간 업데이트
+ 
   useEffect(() => {
     const timeInterval = setInterval(() => {
       const now = new Date();
@@ -47,7 +49,13 @@ export default function EVChargingStation() {
     }, 1000);
     return () => clearInterval(timeInterval);
   }, []);
-
+ 
+  // 랜덤으로 주차된 자리 이미지 선택
+  const getRandomParkedImage = () => {
+    const randomIndex = Math.floor(Math.random() * parkedImages.length);
+    return parkedImages[randomIndex];
+  };
+ 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[var(--font-geist-sans)]">
       <header className="text-center">
@@ -55,7 +63,7 @@ export default function EVChargingStation() {
         <p className="text-lg mt-2">현재 시간: {currentTime}</p>
         <p className="text-lg mt-2">실시간 주차 가능 대수: {parkingData.availableSpots} 대</p>
       </header>
-
+ 
       <main className="flex flex-col gap-8 items-center">
         <div className="flex flex-wrap gap-4 justify-center">
           {parkingData.parkingTimes.map((time, index) => (
@@ -65,25 +73,31 @@ export default function EVChargingStation() {
                 time ? "bg-gray-300 animate-fade-in" : "bg-green-300 animate-blink"
               }`}
             >
-              <Image
-                src="/charging-icon.svg"
-                alt="Charging Icon"
-                width={24}
-                height={24}
-                className={time ? "" : "hidden"}
-              />
+              {time ? (
+                <Image
+                  src={getRandomParkedImage()} // 랜덤으로 주차된 자리 이미지 선택
+                  alt="Parked Car"
+                  width={60}
+                  height={60}
+                />
+              ) : (
+                <Image
+                  src="images/basic.png" // 빈 자리 이미지
+                  alt="Available Spot"
+                  width={24}
+                  height={24}
+                />
+              )}
               <p className="mt-2">{time || "빈 자리"}</p>
             </div>
           ))}
         </div>
       </main>
-
+ 
       <footer className="flex gap-6 items-center justify-center">
-        <a>
-          김장환, 신은호, 이유진, 진경은
-        </a>
+        <a>김장환, 신은호, 이유진, 진경은</a>
       </footer>
-
+ 
       <style jsx>{`
         .animate-blink {
           animation: blink 1s infinite;
