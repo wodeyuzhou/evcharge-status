@@ -1,13 +1,15 @@
-# 웹사이트 주소
+## 웹사이트 주소
 **- https://evcharge-status.vercel.app**
 
-# 팀 구성
+## 팀 구성
 |[김장환](https://github.com/wodeyuzhou)|[신은호](https://github.com/neungho1)|[이유진](https://github.com/runth)|[진경은](https://github.com/JinKyungEun000)|
 |:---:|:---:|:---:|:--:|
 |<img src="https://github.com/user-attachments/assets/2aa22ddc-f059-43be-b66e-7215e9068d59" width="100px" height="100px"/>|<img src="https://github.com/user-attachments/assets/2aa22ddc-f059-43be-b66e-7215e9068d59" width="100px" height="100px"/>|<img src="https://github.com/user-attachments/assets/2aa22ddc-f059-43be-b66e-7215e9068d59" width="100px" height="100px"/>|<img src="https://github.com/user-attachments/assets/2aa22ddc-f059-43be-b66e-7215e9068d59" width="100px" height="100px"/>|
 |팀장 / 웹서버|객체 인식 모델|프론트엔드|데이터셋 구축|
 
-# 🚗 On-device 기반 실시간 전기차 충전소 주차 자리 현황 시스템
+</br>
+
+# 🚗 엣지 디바이스 기반 실시간 전기차 충전소 자리 인식 시스템
 
 <img src="https://github.com/user-attachments/assets/a5052757-e58b-44fa-b2de-80460d5c2fcd" width="550px" height="295px"/> <img src="https://github.com/user-attachments/assets/2ef72042-4ba9-400d-bd90-39c452696ce3" width="550px" height="295px"/>
 
