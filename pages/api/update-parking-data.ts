@@ -6,6 +6,11 @@ let parkingData = {
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
   if (req.method === 'POST') {
     const { available_spots, parking_times } = req.body;
     parkingData = {
