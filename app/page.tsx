@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 type ParkingData = {
+  availableSpots: number;
   parkingTimes: string[];
 };
 
 export default function EVChargingStation() {
   const [parkingData, setParkingData] = useState<ParkingData>({
+    availableSpots: 7,
     parkingTimes: Array(7).fill(""), // 주차 가능 자리 7개
   });
-  const [availableSpots, setAvailableSpots] = useState(7);
   const [currentTime, setCurrentTime] = useState("");
 
   // 주차 데이터 업데이트
@@ -25,7 +26,7 @@ export default function EVChargingStation() {
 
           // 빈 자리 개수를 계산하여 availableSpots 업데이트
           const emptySpots = data.parkingTimes.filter((time: string) => time === "").length;
-          setAvailableSpots(emptySpots);
+          setParkingData((prevData) => ({ ...prevData, availableSpots: emptySpots }));
         }
       } catch (error) {
         console.error("Failed to fetch parking data:", error);
@@ -52,7 +53,7 @@ export default function EVChargingStation() {
       <header className="text-center">
         <h1 className="text-2xl font-bold">국립한밭대 전기차 충전소 알림 시스템</h1>
         <p className="text-lg mt-2">현재 시간: {currentTime}</p>
-        <p className="text-lg mt-2">실시간 주차 가능 대수: {availableSpots} 대</p>
+        <p className="text-lg mt-2">실시간 주차 가능 대수: {parkingData.availableSpots} 대</p>
       </header>
 
       <main className="flex flex-col gap-8 items-center">
@@ -78,20 +79,8 @@ export default function EVChargingStation() {
       </main>
 
       <footer className="flex gap-6 items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden="true"
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
+        <a>
+          김장환, 신은호, 이유진, 진경은
         </a>
       </footer>
 
