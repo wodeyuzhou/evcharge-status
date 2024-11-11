@@ -70,24 +70,26 @@ export default function EVChargingStation() {
         />
       </div>
 
-      {/* 상단 헤더 - 페이지 스크롤에 따라 움직임 */}
-      <header className="bg-white bg-opacity-25 py-8 sm:py-16 px-4 sm:px-12 shadow-lg flex flex-col sm:flex-row justify-between items-center w-full relative z-20">
+      {/* 상단 헤더 - 전체 폭 차지 */}
+      <header className="bg-white bg-opacity-25 py-8 sm:py-32 px-4 sm:px-12 shadow-lg flex justify-between items-center w-full relative z-20">
         {/* 왼쪽 로고 */}
         <div className="flex items-center mb-4 sm:mb-0 pl-4 sm:pl-8">
-          <Image src="/logo.jpg" alt="Logo" width={200} height={40} className="mr-4 sm:mr-8" /> {/* 로고 크기 증가 */}
+          <Image src="/logo.jpg" alt="Logo" width={200} height={40} className="mr-4 sm:mr-8" />
         </div>
-        
+
         {/* 가운데 텍스트 */}
-        <div className="text-center flex-1">
-          <h1 className="text-xl sm:text-3xl font-bold text-black">국립한밭대 실시간 전기차 충전소</h1>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+          <h1 className="text-xl sm:text-3xl font-bold text-black">국립한밭대학교 실시간 전기차 충전소 자리 인식 시스템</h1>
           <h2 className="text-md sm:text-xl font-semibold text-black mt-2">Hanbat National University EV Charging Station Notification System</h2>
-          <p className="text-lg sm:text-xl mt-6 font-semibold text-black">현재 시간: {currentTime}</p> {/* 현재 시간 표시 */}
+          <p className="text-lg sm:text-2xl mt-8 text-black">{currentTime}</p>
+          <div className="flex items-center justify-center gap-1 mt-6">
+            <Image src="/local.png" alt="Location" width={70} height={20} />
+            <p className="text-lg sm:text-2xl text-black">국제교류관(S0) 주차장</p>
+          </div>
         </div>
 
         {/* 오른쪽 정보 및 GitHub 링크 */}
         <div className="flex flex-col items-center sm:items-end gap-1 text-gray-700 pr-4 sm:pr-8 mt-4 sm:mt-0">
-          <p className="text-base sm:text-xl font-bold text-gray-700">김장환, 신은호, 이유진, 진경은</p>
-          {/* GitHub 링크 감싸는 블록 */}
           <div className="flex items-center gap-2 bg-gray-400 p-2 rounded-lg shadow-sm">
             <a href="https://github.com/wodeyuzhou/evcharge-status" target="_blank" rel="noopener noreferrer" className="text-lg sm:text-xl font-bold flex items-center gap-2">
               <Image src="/github-logo.png" alt="GitHub" width={70} height={20} />
@@ -131,10 +133,10 @@ export default function EVChargingStation() {
       </div>
 
       {/* 하단 푸터 - 현재 시간과 주차 가능 대수 */}
-      <footer className="bg-white bg-opacity-50 p-4 sm:p-14 shadow-lg rounded-t-lg flex justify-center items-center w-full relative mt-16">
+      <footer className="bg-white bg-opacity-50 p-6 sm:p-14 shadow-lg rounded-t-lg flex justify-center items-center w-full relative mt-32">
         <div className="text-center">
-          <p className="text-lg sm:text-2xl font-semibold text-gray-700 mt-2">실시간 주차 가능 대수: {parkingData.availableSpots} 대</p>
-          <p className="text-lg sm:text-2xl font-semibold text-gray-700 mt-6">소중한 오픈소스 활용 SW경진대회</p>
+          <p className="text-lg sm:text-3xl font-semibold text-gray-700 mt-6">소중한 오픈소스 활용 SW경진대회</p>
+          <p className="text-lg sm:text-2xl font-semibold text-gray-700 mt-6">김장환, 신은호, 이유진, 진경은</p>
         </div>
       </footer>
 
