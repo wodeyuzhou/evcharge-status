@@ -9,7 +9,7 @@
 
 # 🚗 On-device 기반 실시간 전기차 충전소 주차 자리 현황 시스템
 
-<img src="https://github.com/user-attachments/assets/a5052757-e58b-44fa-b2de-80460d5c2fcd" width="530px" height="300px"/> <img src="https://github.com/user-attachments/assets/2ef72042-4ba9-400d-bd90-39c452696ce3" width="530px" height="300px"/>
+<img src="https://github.com/user-attachments/assets/a5052757-e58b-44fa-b2de-80460d5c2fcd" width="500px" height="275px"/> <img src="https://github.com/user-attachments/assets/2ef72042-4ba9-400d-bd90-39c452696ce3" width="500px" height="275px"/>
 
 이 시스템은 라즈베리파이를 활용한 On-device 객체 인식 기술을 통해 전기차 충전소의 주차 자리 현황과 충전 상태를 실시간으로 모니터링하여 사용자에게 제공하는 것을 목표로 합니다.</br>
 또한 이 시스템은 기존의 CCTV나 다양한 에지 디바이스와의 통합을 통해 전기차 주차 자리를 실시간으로 모니터링할 수 있도록 확장 가능합니다.
