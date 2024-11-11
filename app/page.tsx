@@ -74,7 +74,7 @@ export default function EVChargingStation() {
       <header className="bg-white bg-opacity-25 py-8 sm:py-16 px-4 sm:px-12 shadow-lg flex flex-col sm:flex-row justify-between items-center w-full fixed top-0 left-0 right-0 z-20">
         {/* 왼쪽 로고 */}
         <div className="flex items-center mb-4 sm:mb-0 pl-4 sm:pl-8">
-          <Image src="/logo.jpg" alt="Logo" width={100} height={40} className="mr-4 sm:mr-8" /> {/* 로고 크기 증가 */}
+          <Image src="/logo.jpg" alt="Logo" width={200} height={40} className="mr-4 sm:mr-8" /> {/* 로고 크기 증가 */}
         </div>
         
         {/* 가운데 텍스트 */}
@@ -90,7 +90,7 @@ export default function EVChargingStation() {
           {/* GitHub 링크 감싸는 블록 */}
           <div className="flex items-center gap-2 bg-gray-400 p-2 rounded-lg shadow-sm">
             <a href="https://github.com/wodeyuzhou/evcharge-status" target="_blank" rel="noopener noreferrer" className="text-lg sm:text-xl font-bold flex items-center gap-2">
-              <Image src="/github-logo.png" alt="GitHub" width={50} height={20} />
+              <Image src="/github-logo.png" alt="GitHub" width={70} height={20} />
               <span>GitHub Repository</span>
             </a>
           </div>
@@ -102,7 +102,7 @@ export default function EVChargingStation() {
         {parkingData.parkingTimes.map((time, index) => (
           <div
             key={index}
-            className={`relative w-[160px] h-[200px] sm:w-[300px] sm:h-[400px] flex items-center justify-center rounded-lg shadow-lg overflow-hidden ${
+            className={`relative w-[160px] h-[200px] sm:w-[250px] sm:h-[400px] flex items-center justify-center rounded-lg shadow-lg overflow-hidden ${
               time ? "bg-gray-200" : "animate-blink-white"
             }`}
           >
