@@ -71,30 +71,33 @@ export default function EVChargingStation() {
       </div>
 
       {/* 상단 헤더 - 전체 폭 차지 */}
-      <header className="bg-white bg-opacity-75 py-12 px-12 shadow-lg flex justify-between items-center w-full fixed top-0 left-0 right-0 z-20">
+      <header className="bg-white bg-opacity-25 py-16 px-12 shadow-lg flex justify-between items-center w-full fixed top-0 left-0 right-0 z-20">
         {/* 왼쪽 로고 */}
         <div className="flex items-center pl-8">
-          <Image src="/logo.jpg" alt="Logo" width={120} height={60} className="mr-4" /> {/* 로고 크기 증가 */}
+          <Image src="/logo.jpg" alt="Logo" width={170} height={60} className="mr-4" /> {/* 로고 크기 증가 */}
         </div>
         
         {/* 가운데 텍스트 */}
         <div className="text-center flex-1">
-          <h1 className="text-2xl font-bold text-gray-700">국립한밭대 전기차 충전소</h1>
-          <h2 className="text-lg font-semibold text-gray-700">Hanbat National University EV Charging Station Notification System</h2>
+          <h1 className="text-3xl font-bold text-black">국립한밭대 전기차 충전소</h1>
+          <h2 className="text-xl font-semibold text-black">Hanbat National University EV Charging Station Notification System</h2>
         </div>
 
         {/* 오른쪽 정보 및 GitHub 링크 */}
         <div className="flex flex-col items-end gap-1 text-gray-700 pr-8">
-          <p className="text-base">김장환, 신은호, 이유진, 진경은</p>
-          <a href="https://github.com/your-github-repo" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-            <Image src="/github-logo.png" alt="GitHub" width={24} height={24} />
-            <span>GitHub Repository</span>
-          </a>
+          <p className="text-xl">김장환, 신은호, 이유진, 진경은</p>
+          {/* GitHub 링크 감싸는 블록 */}
+          <div className="flex items-center gap-2 bg-gray-400 p-2 rounded-lg shadow-sm">
+            <a href="https://github.com/your-github-repo" target="_blank" rel="noopener noreferrer" className="text-xl font-bold flex items-center gap-2">
+              <Image src="/github-logo.png" alt="GitHub" width={75} height={24} />
+              <span>GitHub Repository</span>
+            </a>
+          </div>
         </div>
       </header>
 
       {/* 주차 관련 콘텐츠 - 헤더 아래 배치 */}
-      <div className="flex justify-center gap-4 mt-48 pt-12">
+      <div className="flex justify-center gap-4 mt-60 pt-20">
         {parkingData.parkingTimes.map((time, index) => (
           <div
             key={index}
@@ -117,18 +120,20 @@ export default function EVChargingStation() {
                 </div>
               </>
             ) : (
-              // 빈 자리는 흰색 깜빡임 애니메이션 유지
-              <div className="w-full h-full"></div>
+              // 빈 자리는 흰색 깜빡임 애니메이션 유지 및 "주차 가능" 표시
+              <div className="w-full h-full flex items-center justify-center text-2xl font-bold text-gray-700">
+                주차 가능
+              </div>
             )}
           </div>
         ))}
       </div>
 
       {/* 하단 푸터 - 현재 시간과 주차 가능 대수 */}
-      <footer className="bg-white bg-opacity-75 p-4 shadow-lg rounded-t-lg flex justify-center items-center w-full fixed bottom-0 left-0 right-0 z-20">
+      <footer className="bg-white bg-opacity-50 p-12 shadow-lg rounded-t-lg flex justify-center items-center w-full fixed bottom-0 left-0 right-0 z-20">
         <div className="text-center">
-          <p className="text-lg font-semibold text-gray-700">현재 시간: {currentTime}</p>
-          <p className="text-lg font-semibold text-gray-700 mt-2">실시간 주차 가능 대수: {parkingData.availableSpots} 대</p>
+          <p className="text-2xl font-semibold text-gray-700">현재 시간: {currentTime}</p>
+          <p className="text-2xl font-semibold text-gray-700 mt-2">실시간 주차 가능 대수: {parkingData.availableSpots} 대</p>
         </div>
       </footer>
 
