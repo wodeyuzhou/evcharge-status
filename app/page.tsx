@@ -71,10 +71,10 @@ export default function EVChargingStation() {
       </div>
 
       {/* 상단 헤더 - 전체 폭 차지 */}
-      <header className="bg-white bg-opacity-25 py-12 px-12 shadow-lg flex justify-between items-center w-full fixed top-0 left-0 right-0 z-20">
+      <header className="bg-white bg-opacity-75 py-12 px-12 shadow-lg flex justify-between items-center w-full fixed top-0 left-0 right-0 z-20">
         {/* 왼쪽 로고 */}
         <div className="flex items-center pl-8">
-          <Image src="/logo.jpg" alt="Logo" width={170} height={60} className="mr-4" /> {/* 로고 크기 증가 */}
+          <Image src="/logo.jpg" alt="Logo" width={120} height={60} className="mr-4" /> {/* 로고 크기 증가 */}
         </div>
         
         {/* 가운데 텍스트 */}
@@ -86,7 +86,7 @@ export default function EVChargingStation() {
         {/* 오른쪽 정보 및 GitHub 링크 */}
         <div className="flex flex-col items-end gap-1 text-gray-700 pr-8">
           <p className="text-base">김장환, 신은호, 이유진, 진경은</p>
-          <a href="https://github.com/wodeyuzhou/evcharge-status" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+          <a href="https://github.com/your-github-repo" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
             <Image src="/github-logo.png" alt="GitHub" width={24} height={24} />
             <span>GitHub Repository</span>
           </a>
@@ -102,18 +102,30 @@ export default function EVChargingStation() {
               time ? "bg-gray-200" : "animate-blink-white"
             }`}
           >
-            {/* 주차 시간 표시 - 상단에 위치 */}
-            {time && (
-              <div className="absolute top-0 w-full bg-red-500 bg-opacity-50 text-white text-center py-2 text-lg animate-blink-red">
-                {time}
-              </div>
+            {/* 주차된 자리 이미지 표시 - 주차 시간이 있는 경우 */}
+            {time ? (
+              <>
+                <Image
+                  src={spotImages[index]} // 해당 자리의 차 이미지 표시
+                  alt={`Parking Spot ${index + 1}`}
+                  layout="fill"
+                  objectFit="cover"
+                />
+                {/* 주차 시간 표시 - 상단에 위치 */}
+                <div className="absolute top-0 w-full bg-red-500 bg-opacity-50 text-white text-center py-2 text-lg animate-blink-red">
+                  {time}
+                </div>
+              </>
+            ) : (
+              // 빈 자리는 흰색 깜빡임 애니메이션 유지
+              <div className="w-full h-full"></div>
             )}
           </div>
         ))}
       </div>
 
       {/* 하단 푸터 - 현재 시간과 주차 가능 대수 */}
-      <footer className="bg-white bg-opacity-75 p-10 shadow-lg rounded-t-lg flex justify-center items-center w-full fixed bottom-0 left-0 right-0 z-20">
+      <footer className="bg-white bg-opacity-75 p-4 shadow-lg rounded-t-lg flex justify-center items-center w-full fixed bottom-0 left-0 right-0 z-20">
         <div className="text-center">
           <p className="text-lg font-semibold text-gray-700">현재 시간: {currentTime}</p>
           <p className="text-lg font-semibold text-gray-700 mt-2">실시간 주차 가능 대수: {parkingData.availableSpots} 대</p>
@@ -137,6 +149,5 @@ export default function EVChargingStation() {
         }
       `}</style>
     </div>
-
   );
 }
