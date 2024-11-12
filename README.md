@@ -34,8 +34,8 @@ evcharge-status/
 └── pi_code/
     │── best.pt                       # YOLOv8n 사전학습 모델
     │── bounding_boxes.json           # 주차 자리 정보
-    │── test_parking_management.py    # 
-    └── test_raspberrypi.py           # 
+    │── test_parking_management.py    # 모델 로드 / 주차구역 json파일 로드 / 주차 여부 판단
+    └── test_raspberrypi.py           # 주차 여부 확인해서 주차 시간 체크 및 초기화 / 시각화
 ```
 
 ## 🚀 기술 스택
