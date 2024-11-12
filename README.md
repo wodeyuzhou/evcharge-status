@@ -10,42 +10,54 @@
 </br>
 
 # 🚗 엣지 디바이스 기반 실시간 전기차 충전소 자리 인식 시스템
+<img width="1454" alt="스크린샷 2024-11-12 20 19 06" src="https://github.com/user-attachments/assets/d84fa839-7372-4460-b9b9-2b5c6dc1842d">
 
-<img src="https://github.com/user-attachments/assets/a5052757-e58b-44fa-b2de-80460d5c2fcd" width="550px" height="295px"/> <img src="https://github.com/user-attachments/assets/2ef72042-4ba9-400d-bd90-39c452696ce3" width="550px" height="295px"/>
-
-이 시스템은 라즈베리파이를 활용한 On-device 객체 인식 기술을 통해 전기차 충전소의 주차 자리 현황과 충전 상태를 실시간으로 모니터링하여 사용자에게 제공하는 것을 목표로 합니다.</br>
-또한 이 시스템은 기존의 CCTV나 다양한 에지 디바이스와의 통합을 통해 전기차 주차 자리를 실시간으로 모니터링할 수 있도록 확장 가능합니다.
+## 🔍 개발 필요성 및 목적
+<img width="1301" alt="스크린샷 2024-11-12 20 16 03" src="https://github.com/user-attachments/assets/a6b56bb4-6338-4666-b835-ae0963a54aaa">
 
 ## 🖥️ 시스템 구성도
-<img width="1076" alt="스크린샷 2024-11-11 21 26 24" src="https://github.com/user-attachments/assets/7f47bfb0-2243-4116-896e-1011e0a8d799">
+<img width="1087" alt="스크린샷 2024-11-12 18 49 07" src="https://github.com/user-attachments/assets/5b248dd9-bef2-46d7-9a57-89e1e1688216">
 
-1. **주차 자리 실시간 감지**: 라즈베리파이는 카메라로부터 실시간 영상을 받아 YOLOv8n 모델을 통해 차량과 빈 자리를 구분합니다.
-2. **데이터 전송 및 실시간 업데이트**: 라즈베리파이가 인식한 주차 자리 현황과 주차 시간을 Next.js API 서버로 전송합니다.
-3. **실시간 웹 페이지 업데이트**: Vercel에서 Next.js 애플리케이션을 호스팅하여 실시간으로 업데이트되는 주차 자리 정보를 웹 페이지를 통해 확인할 수 있습니다.
+1. **주차 자리 실시간 감지**: 라즈베리파이는 카메라로부터 실시간 영상을 받아 YOLOv8n 모델을 통해 차량과 빈 자리를 구분
+2. **데이터 전송 및 실시간 업데이트**: 라즈베리파이가 인식한 주차 자리 현황과 주차 시간을 Next.js API 서버로 전송
+3. **실시간 웹 페이지 업데이트**: Vercel에서 Next.js 애플리케이션을 호스팅하여 실시간으로 업데이트되는 주차 자리 정보를 웹 페이지를 통해 확인
+
+
+## 🔧 적용 기술
+<img width="1377" alt="스크린샷 2024-11-12 20 21 01" src="https://github.com/user-attachments/assets/315f4358-cd1a-4b2a-99a6-c8b93a1adfee">
 
 ## 📂 프로젝트 구조
 ```
 evcharge-status/
 ├── app/
-│   └── page.tsx  # 웹페이지 구성 파일
+│   └── page.tsx                      # 웹페이지 인터페이스 구성 파일
 ├── pages/
 │   └── api/
 │       └── update-parking-data.ts    # Next.js API 엔드포인트, 주차 데이터 수신 및 제공
 └── pi_code/
-    │── best.pt                       # YOLOv8n 사전학습 모델
-    │── bounding_boxes.json           # 주차 자리 정보
-    │── test_parking_management.py    # 모델 로드 / 주차구역 json파일 로드 / 주차 여부 판단
-    └── test_raspberrypi.py           # 주차 여부 확인해서 주차 시간 체크 및 초기화 / 시각화
+    │── yolov8n.pt                    # 테스트용 모델 파일
+    │── best.pt                       # 주차장 인식용 모델 파일
+    │── bounding_boxes.json           # 주차 구역 좌표 정보 파일
+    │── parking_detection.py          # 모델 로드 및 주차 여부 판단 스크립트
+    └── parking_time_manager.py       # 주차 시간 관리 및 시각화 스크립트
 ```
 
-## 🚀 기술 스택
-- **Hardware**: 라즈베리파이4, 라즈베리파이 카메라 모듈
-- **객체 인식 라이브러리**: OpenCV, Ultralytics YOLO
-- **프론트엔드**: Next.js, React
-- **백엔드**: Next.js API Routes, Vercel
+## 🚀 향후 개선 사항
+- 데이터베이스 연동: 주차된 차량 정보를 저장할 데이터베이스를 추가하여, 주차 이력 관리 및 분석에 활용.
+- IoT 기기 연결 지원: 여러 IoT 기기와 연결하여 다른 전기차 충전소에서도 사용 가능한 시스템으로 확장 가능.
 
+## 📚 References
 
-## 🔧 향후 개선 사항
-- 데이터베이스 사용: 데이터베이스를 연결하여 주차된 차량 정보 저장
-- 주차 시간 계산: 주차 시작 시간을 기록하여 주차된 시간이 일정 시간 이상일 경우 알림을 제공하는 기능 추가.
-- IoT 기기 연결 지원: 여러 IoT 장비들을 연결하여 일반적인 전기차 충전소에서도 사용 가능한 시스템으로 확장.
+- ### 개발 필요성 및 목적
+    https://www.khan.co.kr/economy/auto/article/202405261450001 </br>
+    https://www.hankyung.com/article/202312083584g
+
+- ### Ultralytics YOLOv8
+    https://docs.ultralytics.com/ </br>
+    https://github.com/ultralytics/ultralytics
+
+- ### Next.js / Vercel / OpenCV
+    [Next.js API Routes Guide](https://nextjs.org/docs/api-routes/introduction) </br>
+    [Vercel Documentation](https://vercel.com/docs) </br>
+    [OpenCV Documentation](https://docs.opencv.org/4.10.0/)
+    
