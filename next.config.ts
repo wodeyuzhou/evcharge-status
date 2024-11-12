@@ -1,7 +1,15 @@
-import type { NextConfig } from "next";
+const prod = process.env.NODE_ENV === 'production';
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+const runtimeCaching = require('next-pwa/cache');
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  runtimeCaching,
+  disable: prod ? false : true
+});
 
-export default nextConfig;
+const nextConfig = withPWA({
+  // next config
+});
+module.exports = nextConfig;
