@@ -2,7 +2,7 @@
     "name": "EV Charging Station Notification System",
     "short_name": "EV Charge",
     "description": "국립한밭대학교 실시간 전기차 충전소 자리 인식 시스템",
-    "start_url": "/",
+    "start_url": "/https://evcharge-status.vercel.app",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#4a90e2",
