@@ -1,6 +1,9 @@
 ## 🔧 Vercel CI/CD repository
 Vercel 배포용 github
 
+## 대회 github 주소
+https://github.com/HBNU-SWUNIV/ossw-competition24-effai
+
 ## 웹사이트 주소
     https://evcharge-status.vercel.app
 
