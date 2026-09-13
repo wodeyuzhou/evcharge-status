@@ -91,7 +91,7 @@ export default function EVChargingStation() {
         {/* 오른쪽 정보 및 GitHub 링크 */}
         <div className="flex flex-col items-center sm:items-end gap-1 text-gray-700 pr-4 sm:pr-8 mt-4 sm:mt-0">
           <div className="flex items-center gap-2 bg-gray-400 p-2 rounded-lg shadow-sm">
-            <a href="https://github.com/wodeyuzhou/evcharge-status" target="_blank" rel="noopener noreferrer" className="text-lg sm:text-xl font-bold flex items-center gap-2">
+            <a href="https://github.com/janghwankim1/evcharge-status" target="_blank" rel="noopener noreferrer" className="text-lg sm:text-xl font-bold flex items-center gap-2">
               <Image src="/github-logo.png" alt="GitHub" width={70} height={20} />
               <span>GitHub Repository</span>
             </a>
